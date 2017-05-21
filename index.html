@@ -58,10 +58,10 @@
     <script src="src/js/jquery.min.js" charset="utf-8"></script>
     <script>
 function getWeather(latlong){
-  var thisUrl = "//api.darksky.net/forecast/e6a23e4c1c25782ec571f2fe3a975775/" + latlong + "?units=si";
-  $.getJSON(thisUrl + ",callback=?", function(json){
+  var thisUrl = "//api.darksky.net/forecast/e6a23e4c1c25782ec571f2fe3a975775/" + latlong ;
+  $.getJSON(thisUrl + "?callback=?", function(json){
     // console.log(json);
-    var temperature = Math.round(json.currently.temperature);
+    var temperature = Math.round((json.currently.temperature - 32) / 1.8);
     $("#currentTemp").text(temperature + " &deg;C");
   })
 //   var weather = $.ajax({
