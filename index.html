@@ -64,14 +64,14 @@ function getWeather(latlong){
   })
 }
 
-$.getJSON("//ip-api.com/json/?callback=?", function(data) {
+$.getJSON("//ipapi.co/json/", function(data) {
     // var table_body = "";
     // $.each(data, function(k, v) {
     //     table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
     // });
     // $("#GeoResults").html(table_body);
     $("#location").text(data.city +", " + data.country);
-    var latlong = data.lat + "," + data.lon;
+    var latlong = data.latitude + "," + data.longitude;
     getWeather(latlong);
 });
 </script>
