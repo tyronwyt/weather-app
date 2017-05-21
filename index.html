@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/css/main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 card">
+            <h1 id="location"></h1>
+        </div>
+        <div class="col-md-12 weather-tabs">
+
+        </div>
+        </div>
+        <div class="row weather">
+          <div class="col-sm-4 tab">
+            <p>28 C</p>
+          </div>
+          <div class="col-sm-8 week-tabs">
+            <div class="col-sm-2 tab">
+              <p>hello</p>
+            </div>
+            <div class="col-sm-2 tab">
+              <p>28 C</p>
+            </div>
+            <div class="col-sm-2 tab">
+              <p>28 C</p>
+            </div>
+            <div class="col-sm-2 tab">
+              <p>28 C</p>
+            </div>
+            <div class="col-sm-2 tab">
+              <p>28 C</p>
+            </div>
+            <div class="col-sm-2 tab">
+              <p>28 C</p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <!-- <div class="container">
+      <div class="row ">
+          <div class="col-md-8 modal">
+            <p>test</p>
+          </div>
+      </div>
+    </div> -->
+
+    <script src="src/js/jquery.min.js" charset="utf-8"></script>
+    <script>
+function getWeather(latlong){
+  var url = "//api.darksky.net/forecast/e6a23e4c1c25782ec571f2fe3a975775/" + latlong;
+  $.getJSON(url, function(data) {
+    console.log(data);
+  })
+}
+
+$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+    // var table_body = "";
+    // $.each(data, function(k, v) {
+    //     table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
+    // });
+    // $("#GeoResults").html(table_body);
+    $("#location").text(data.city +", " + data.country);
+    var latlong = data.lat + "," + data.lon;
+    getWeather(latlong);
+});
+</script>
+  </body>
+</html>
