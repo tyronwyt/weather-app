@@ -1593,7 +1593,7 @@ var weather =
 
 }
 
-$.getJSON("http://ipapi.co/json/", function(data) {
+$.getJSON("https://ipapi.co/json/", function(data) {
     $("#location").text(data.city +", " + data.country);
     var latlong = data.latitude + "," + data.longitude;
     getWeather(latlong);
