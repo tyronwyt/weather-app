@@ -78,6 +78,7 @@ font-family: 'Roboto', sans-serif;
   margin-top: 10px;
 }
 .week-tab img {
+  width: 100%;
   margin-top: 10px;
 }
 
@@ -85,4 +86,20 @@ font-family: 'Roboto', sans-serif;
   font-weight: normal;
   font-size: 16px;
   margin-top: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    height: 150px;
+  }
+  .tab, .tab:last-child{
+    border-bottom: 2px solid rgb(115, 114, 114);
+    padding: 5px;
+    height: auto;
+  }
+
+
+  /*.week-tab img {
+    width: 20%;
+  }*/
 }
