@@ -1,3 +1,6 @@
+var imperial = true;
+
+
 function getWeather(latlong){
   var thisUrl = "//api.darksky.net/forecast/e6a23e4c1c25782ec571f2fe3a975775/" + latlong;
   $.getJSON(thisUrl + "?callback=?", function(json){
@@ -6,16 +9,13 @@ render(json);
 
 function render(weather){
 
-
-  $("#currentTemp").html(Math.round(weather.currently.temperature) + '<span class="temp">&#8451;</span>');
     var src = "src/images/icons/";
   $("#date-icon").attr('src', src + weather.currently.icon + ".png");
-  $("#currentWind").html(Math.round(weather.currently.windSpeed) + ' km/h');
   $("#currentRain").html(Math.round(weather.currently.precipProbability) + '%');
 // console.log(weather.daily.data[1].temperatureMax);
   for (var i = 1; i < weather.daily.data.length; i++) {
-    var day = "#day" + i;
-    $(day).html(Math.round(weather.daily.data[i].temperatureMax) + "&#8451;");
+
+
       //Insert icons
 
     var icon = "#date-icon" + i;
@@ -29,7 +29,32 @@ function render(weather){
       var day = "#day" + i + "Date";
       $(day).html(moment().add(i, 'days').format('ddd'));
     }
+
+    renderTemp(weather);
   }
+
+
+function renderTemp(weather){
+  if (imperial == true) {
+    $("#currentTemp").html(Math.round(weather.currently.temperature) + '<span id="unit" class="temp">&#8457;</span>');
+    $("#currentWind").html(Math.round(weather.currently.windSpeed) + ' mph');
+
+    for (var i = 1; i < weather.daily.data.length; i++) {
+      var day = "#day" + i;
+      $(day).html(Math.round(weather.daily.data[i].temperatureMax) + "&#8457;");
+    }
+
+  } else {
+    $("#currentTemp").html((Math.round(weather.currently.temperature)-32) / 1.8 + '<span id="unit" class="temp">&#8451;</span>');
+    $("#currentWind").html((Math.round(weather.currently.windSpeed) * 1.609344) + ' km/h');
+
+    for (var i = 1; i < weather.daily.data.length; i++) {
+      var day = "#day" + i;
+      $(day).html((Math.round(weather.daily.data[i].temperatureMax)-32) / 1.8 + "&#8451;");
+    }
+  }
+}
+
 
 function init(){
   $.getJSON("https://ipapi.co/json/", function(data) {
@@ -40,5 +65,13 @@ function init(){
 
 }
 
+$("#unit").onclick(function() {
+  if (imperial) {
+    imperial = false;
+  } else {
+    imperial = true;
+  }
+  init;
+})
 
 $(document).ready(init);

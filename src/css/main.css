@@ -88,6 +88,10 @@ font-family: 'Roboto', sans-serif;
   margin-top: 6px;
 }
 
+#unit {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     height: 150px;
