@@ -65,7 +65,7 @@ function init(){
 
 }
 
-$("#unit").onclick(function() {
+$("#unit").click(function() {
   if (imperial) {
     imperial = false;
   } else {
