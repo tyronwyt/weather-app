@@ -36,7 +36,7 @@ function render(weather){
 
 function renderTemp(weather){
   if (imperial == true) {
-    $("#currentTemp").html(Math.round(weather.currently.temperature) + '<span id="unit" class="temp">&#8457;</span>');
+    $("#currentTemp").html(Math.round(weather.currently.temperature) + '<span class="temp">&#8457;</span>');
     $("#currentWind").html(Math.round(weather.currently.windSpeed) + ' mph');
 
     for (var i = 1; i < weather.daily.data.length; i++) {
@@ -45,7 +45,7 @@ function renderTemp(weather){
     }
 
   } else {
-    $("#currentTemp").html((Math.round(weather.currently.temperature)-32) / 1.8 + '<span id="unit" class="temp">&#8451;</span>');
+    $("#currentTemp").html((Math.round(weather.currently.temperature)-32) / 1.8 + '<span class="temp">&#8451;</span>');
     $("#currentWind").html((Math.round(weather.currently.windSpeed) * 1.609344) + ' km/h');
 
     for (var i = 1; i < weather.daily.data.length; i++) {
@@ -72,9 +72,11 @@ $(document).ready(init);
 $("#unit").click(function() {
   if (imperial) {
     imperial = false;
+    $("#unit").text("Farenheit");
   } else {
     imperial = true;
+    $("#unit").text("Celcius");
   }
   console.log("Changed Unit");
-  init;
+  init();
 })
