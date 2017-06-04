@@ -31,9 +31,14 @@ function render(weather){
     }
   }
 
+function init(){
+  $.getJSON("https://ipapi.co/json/", function(data) {
+      $("#location").text(data.city +", " + data.country);
+      var latlong = data.latitude + "," + data.longitude;
+      getWeather(latlong);
+  });
 
-$.getJSON("https://ipapi.co/json/", function(data) {
-    $("#location").text(data.city +", " + data.country);
-    var latlong = data.latitude + "," + data.longitude;
-    getWeather(latlong);
-});
+}
+
+
+$(document).ready(init);
