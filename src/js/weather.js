@@ -71,6 +71,7 @@ $("#unit").click(function() {
   } else {
     imperial = true;
   }
+  console.log("Changed Unit");
   init;
 })
 
