@@ -45,12 +45,12 @@ function renderTemp(weather){
     }
 
   } else {
-    $("#currentTemp").html(Math.round((weather.currently.temperature-32) / 1.8) + '<span class="temp">&#8451;</span>');
+    $("#currentTemp").html(Math.round((weather.currently.temperature - 32) / 1.8) + '<span class="temp">&#8451;</span>');
     $("#currentWind").html(Math.round(weather.currently.windSpeed * 1.609344) + ' km/h');
 
     for (var i = 1; i < weather.daily.data.length; i++) {
       var day = "#day" + i;
-      $(day).html(Math.round((weather.daily.data[i].temperatureMax)-32) / 1.8) + "&#8451;");
+      $(day).html(Math.round((weather.daily.data[i].temperatureMax - 32) / 1.8) + "&#8451;");
     }
   }
 }
