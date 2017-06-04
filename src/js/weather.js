@@ -65,6 +65,10 @@ function init(){
 
 }
 
+
+
+$(document).ready(init);
+
 $("#unit").click(function() {
   if (imperial) {
     imperial = false;
@@ -74,5 +78,3 @@ $("#unit").click(function() {
   console.log("Changed Unit");
   init;
 })
-
-$(document).ready(init);
